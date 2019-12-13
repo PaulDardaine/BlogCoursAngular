@@ -1,0 +1,22 @@
+<div [ngClass]="{'list-group-item': true,
+'list-group-item-primary': true}">
+    <div>
+        <h3> {{ postTitle }} </h3>
+        <em>publié le {{ createdAt | date}}</em>
+        <br><br>
+        <p> {{ postContent }} </p>
+
+
+        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <form #like="ngForm" (ngSubmit)="likeButton(like)">
+                <button class="btn bg-success" (click)="addLike(like)">J'aime </button>
+            </form>
+
+            <form #dislike="ngForm" (ngSubmit)="dislikeButton(dislike)">
+                <button class="btn bg-danger" (click)="addDislike(dislike)"> Je n'aime pas</button>
+            </form>
+        </div>
+
+        <p [ngStyle]="{color: setLikeColor()}">Popularité : {{ showLike() }} </p>
+    </div>
+</div>
